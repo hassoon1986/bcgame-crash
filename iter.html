@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+  
   <style>
     *, body, button, input, textarea, select {
       text-rendering: optimizeLegibility;
@@ -107,7 +108,7 @@
     </div>
     <hr>
     <div class="container">
-      <table class="table is-striped is-fullwidth is-hoverable is-narrow">
+      <table class="table is-striped is-fullwidth is-hoverable is-narrow" style="display:table">
         <thead>
           <tr>
             <th><b>Game's hash</b></th>
@@ -204,6 +205,13 @@
           $(this).insertAfter(to.children().eq(index - 1));
         }
       };
+
+      var hash_url = window.location.search
+      if ((/\?hash=/).test(hash_url)) {
+        var hash = hash_url.replace(/\?hash=/, '')
+        $('#game_hash_input').val(hash)
+        $('#game_verify_submit').click()
+      }
     </script>
     <script>
       // tell the embed parent frame the height of the content
