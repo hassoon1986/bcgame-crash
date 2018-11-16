@@ -3,8 +3,8 @@ bcgame-crash
 
 Official fair check algorithm.
 
+//Official fair verification algorithm
 
-官方公平校验算法
 <!DOCTYPE html>
 <html>
 <head>
