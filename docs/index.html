@@ -17,7 +17,6 @@
       text-rendering: optimizeLegibility;
       -moz-osx-font-smoothing: grayscale;
     }
-
     body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
       margin:0;
       padding:0;
@@ -52,29 +51,23 @@
     table {
         table-layout: fixed;
     }
-
     table thead tr th:first-child {
         width: 80%;
     }
-
     table tbody tr td {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
     .is-first {
         background-color: rgba(195, 111, 24, 0.2);
     }
-
     .is-over-median {
         color: #44B39D;
     }
-
     .is-at-median {
         color: #3B3C3D;
     }
-
     .is-under-median {
         color: #BF4A67;
     }
@@ -86,6 +79,14 @@
     <div class="container">
       <h1 class="title">bc.game Crash - Game Verification Script</h1>
       <h2 class="subtitle">Third party script used to verify games on crash game.</h2>
+    </div>
+    <hr>
+    <div class="container">
+      <p>The following sites have purchased a non-distributable copy of the previous version of bc.game’s source code, exempting them from the requirements of the AGPL:</p>
+      <p>https://hash.game</p>
+      <p>https://168eth.com</p>
+      <p>https://bc.game</p>
+      <p>https://bcgmtc.com</p>
     </div>
     <hr>
     <div class="container">
@@ -129,20 +130,16 @@
         $('#game_verify_submit').addClass('is-loading');
         $('#game_hash_input, #game_amount_input, #game_verify_submit').attr('disabled', 'disabled');
         $('#game_verify_table').html('');
-
         let prevHash = null;
         for (let i = 0; i < $('#game_amount_input').val(); i++) {
           let hash = String(prevHash ? CryptoJS.SHA256(String(prevHash)) : $('#game_hash_input').val());
           let bust = gameResult(hash);
-
           setTimeout(function() {
             addTableRow(hash, bust, i)
           }, i * 1);
-
           prevHash = hash;
         }
       });
-
       $('#game_amount_input').on('keyup', () => {
         if ($('#game_amount_input').val() >= 10000) {
           if ($('#game_verify_warning').length) return;
@@ -158,7 +155,6 @@
           }
         }
       });
-
       const addTableRow = (hash, bust, index) => {
         $('<tr/>').attr({
           'class': index === 0 ? 'is-first' : null
@@ -169,7 +165,6 @@
             'class': bust === 1.98 ? 'is-at-median' : bust > 1.98 ? 'is-over-median' : 'is-under-median'
           })
         ).appendToWithIndex($('#game_verify_table'), index);
-
         if (index >= $('#game_amount_input').val() - 1) {
           $('#game_hash_input').parent().removeClass('is-loading');
           $('#game_verify_submit').removeClass('is-loading');
@@ -177,25 +172,19 @@
           isVerifying = false;
         }
       };
-
       const gameResult = (seed) => {
         const nBits = 52; // number of most significant bits to use
-
         // 1. r = 52 most significant bits
         seed = seed.slice(0, nBits / 4);
         const r = parseInt(seed, 16);
-
         // 2. X = r / 2^52
         let X = r / Math.pow(2, nBits); // uniformly distributed in [0; 1)
-
         // 3. X = 99 / (1-X)
         X = 99 / (1 - X);
-
         // 4. return max(trunc(X), 100)
         const result = Math.floor(X);
         return Math.max(1, result / 100);
       };
-
       $.fn.appendToWithIndex = function(to, index) {
         if (!to instanceof jQuery) {
           to = $(to);
@@ -206,7 +195,6 @@
           $(this).insertAfter(to.children().eq(index - 1));
         }
       };
-
       var hash_url = window.location.search
       if ((/\?hash=/).test(hash_url)) {
         var hash = hash_url.replace(/\?hash=/, '')
