@@ -8,9 +8,7 @@ AGPL:
 以下のサイトは、前サイトの配信不可コピーを購入する
 bcgameのソースコードは、彼らの要求agpl:
  * bc.game
- * hash.game
- * bcgmtc.com
-
+ 
 Fraudulent sites that are unauthorized to use the bcgame name and brand
 and/or are making false representations about their relationship to bcgame:
 未经授权使用名称和品牌的欺诈网站及/或就其与bcgame的关系作出虚假陈述:
@@ -18,4 +16,4 @@ and/or are making false representations about their relationship to bcgame:
 bcgame名やブランド名を不正に使用する詐欺サイト bcgameとの関係について嘘の陳述をする。
 
 * bcgame.co
-* www.bc-game.io
+ 
